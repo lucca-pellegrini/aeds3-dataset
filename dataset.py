@@ -73,6 +73,9 @@ for col in ('key', 'popularity'):
     df[col] = df[col].astype(int)
 
 
+# Renomeia a coluna 'track_album_album' para 'album_type'
+df = df.rename(columns={'track_album_album': 'album_type'})
+
 # Função auxiliar para converter campos para listas
 def parse_list(value):
     if isinstance(value, str):
