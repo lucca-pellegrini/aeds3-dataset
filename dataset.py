@@ -32,6 +32,7 @@ if os.path.exists(DATASET_CLEAN) and os.path.getmtime(DATASET_CLEAN) > os.path.g
 print("Iniciando processo de limpeza")
 
 import pandas as pd
+import csv
 
 # Usamos tipos explícitos para as colunas que contêm dados ambíguos. Registros
 # inválidos são ignorados.
@@ -82,4 +83,4 @@ for col in ('track_artists', 'genres'):
     df[col] = df[col].apply(parse_list)
 
 df.info()
-df.to_csv(DATASET_CLEAN, index=False)
+df.to_csv(DATASET_CLEAN, index=False, quoting=csv.QUOTE_MINIMAL)
