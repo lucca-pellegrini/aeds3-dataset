@@ -58,14 +58,17 @@ df = df.drop(columns=['streams', 'chart', 'track_track_number', 'rank',
                       'region', 'trend', 'duration_ms'])
 
 # Remove colunas desnecessárias
-df = df.drop(columns=['available_markets'])
+df = df.drop(columns=['available_markets', 'mode', 'added_at',
+                      'time_signature', 'artist_followers',
+                      'artist_popularity', 'album_total_tracks',
+                      'speechiness', 'instrumentalness', 'liveness'])
 
 # Remove registros com campos nulos
-for col in ('added_at', 'album_name', 'track_artists'):
+for col in ('album_name', 'track_artists'):
     df = df.dropna(subset=[col])
 
 # Remove registros com valores inteiros nulos
-for col in ('artist_followers', 'artist_popularity', 'album_total_tracks', 'key'):
+for col in ('key', 'popularity'):
     df = df.dropna(subset=[col])
     df[col] = df[col].astype(int)
 
